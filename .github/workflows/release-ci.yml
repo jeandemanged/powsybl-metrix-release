@@ -122,7 +122,7 @@ jobs:
           echo "archive_path=$ARCHIVE_PATH" >> "$GITHUB_OUTPUT"
 
       - name: Upload release package
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v1
         with:
           files: ${{ steps.metrix-install.outputs.archive_path }}.zip
 
@@ -134,7 +134,7 @@ jobs:
       - name: Install Boost
         run: |
           yum update -y
-          yum install cmake make gcc gcc-c++ which git
+          yum install cmake make gcc gcc-c++ which git zip
           dnf --enablerepo=ol8_codeready_builder install boost-static
 
       - name: Checkout sources
